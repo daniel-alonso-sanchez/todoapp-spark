@@ -1,4 +1,4 @@
-package com.todoapp;
+package com.todoapp.controllers;
 
 import com.google.gson.Gson;
 import spark.Response;

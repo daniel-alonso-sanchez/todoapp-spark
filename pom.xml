@@ -9,16 +9,25 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
+    	<exec.mainClass>com.todoapp.Bootstrap</exec.mainClass>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <spark.version>2.2</spark.version>
+		<guice.version>4.0-beta4</guice.version>
+        <servlet.version>3.1.0</servlet.version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.sparkjava</groupId>
-            <artifactId>spark-core</artifactId>
-            <version>2.0.0</version>
-        </dependency>
+       <dependency>
+			<groupId>com.sparkjava</groupId>
+			<artifactId>spark-core</artifactId>
+			<version>${spark.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+			<version>${guice.version}</version>
+		</dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
@@ -34,6 +43,16 @@
             <artifactId>gson</artifactId>
             <version>2.2.4</version>
         </dependency>
+        <dependency>
+			<groupId>com.nimbusds</groupId>
+			<artifactId>nimbus-jose-jwt</artifactId>
+			<version>2.10.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.reflections</groupId>
+			<artifactId>reflections</artifactId>
+			<version>0.9.9</version>
+		</dependency>		
     </dependencies>
 
     <build>
@@ -84,6 +103,14 @@
 	          <compilerVersion>1.8</compilerVersion>
 	        </configuration>
 	      </plugin>	  
+	      <plugin>
+	      		<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.4.0</version>
+				<configuration>
+				<mainClass>com.todoapp.Bootstrap</mainClass>
+				</configuration>
+	      </plugin>
         </plugins>
     </build>
 

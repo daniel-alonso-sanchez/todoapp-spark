@@ -1,25 +1,30 @@
 package com.todoapp;
 
-import com.google.gson.Gson;
-import com.mongodb.*;
-import org.bson.types.ObjectId;
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+
+import org.bson.types.ObjectId;
+
+import com.google.gson.Gson;
+import com.google.inject.Inject;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
 
 /**
  * Created by shekhargulati on 09/06/14.
  */
 public class TodoService {
-
-    private final DB db;
+	
+    private DB db;
     private final DBCollection collection;
-
-    public TodoService(DB db) {
-        this.db = db;
-        this.collection = db.getCollection("todos");
+    @Inject
+    public TodoService(DB db) {     
+    	this.db=db;
+        this.collection = this.db.getCollection("todos");
     }
 
     public List<Todo> findAll() {
